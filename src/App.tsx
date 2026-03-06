@@ -19,14 +19,14 @@ function App() {
               <li><Link to="/" className="hover:text-blue-500">首页</Link></li>
               <li><Link to="/articles" className="hover:text-blue-500">文章</Link></li>
               <li><Link to="/about" className="hover:text-blue-500">关于</Link></li>
-              <li>
+              {/* <li>
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
                 >
                   {darkMode ? '亮色模式' : '暗色模式'}
                 </button>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </header>
