@@ -1,20 +1,12 @@
 import { Link } from 'react-router-dom';
 import { articles } from '../../data/articles';
 import { useState, useMemo } from 'react';
+import { categoryRules } from '../../utils/category';
+import ArticleCover from '../../components/ArticleCover';
 
 export default function ArticleList() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('全部');
-
-  // Define categories and keywords
-  const categoryRules: Record<string, string[]> = {
-    '前端开发': ['React', 'Vue', 'Angular', 'Webpack', 'Vite', 'CSS', 'HTML', 'JavaScript', 'TypeScript', 'JS', 'TS', 'DOM', 'BFC', 'Flex', 'Grid'],
-    '后端技术': ['Node', 'PHP', 'Java', 'Python', 'Go', 'SQL', 'Database', 'Redis', 'Nginx', 'Docker', 'CentOS', 'Linux', 'SSH'],
-    '计算机基础': ['HTTP', 'HTTPS', 'TCP', 'UDP', 'DNS', '网络', '算法', '数据结构', '操作系统', '进程', '线程'],
-    '工程化': ['Git', 'npm', 'yarn', 'pnpm', 'CI/CD', 'Jest', 'Test', 'Eslint', 'Prettier', 'Husky', 'Commitlint'],
-    '安全': ['XSS', 'CSRF', '安全', '攻击', '防御', '加密', '解密'],
-    '其他': [] // Fallback
-  };
 
   // Auto-categorize articles
   const categorizedArticles = useMemo(() => {
@@ -72,10 +64,10 @@ export default function ArticleList() {
               placeholder="搜索文章..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow pl-10"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow pl-10"
             />
             <svg
-              className="w-5 h-5 absolute left-3 top-2.5 text-gray-400"
+              className="w-5 h-5 absolute left-3 top-2.5 text-gray-400 dark:text-gray-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -99,7 +91,7 @@ export default function ArticleList() {
               className={`w-full flex justify-between items-center px-3 py-2 text-sm rounded-md transition-colors ${
                 selectedCategory === '全部'
                   ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium'
-                  : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               <span>全部文章</span>
@@ -115,7 +107,7 @@ export default function ArticleList() {
                   className={`w-full flex justify-between items-center px-3 py-2 text-sm rounded-md transition-colors ${
                     selectedCategory === category
                       ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium'
-                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
                   }`}
                 >
                   <span>{category}</span>
@@ -149,20 +141,12 @@ export default function ArticleList() {
                 className="group block bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col h-full"
               >
                 <div className="h-40 bg-gray-200 dark:bg-gray-700 overflow-hidden shrink-0 relative">
-                  {article.cover ? (
-                    <img
-                      src={article.cover}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800">
-                      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                      </svg>
-                    </div>
-                  )}
+                  <ArticleCover
+                    title={article.title}
+                    cover={article.cover}
+                    category={article.category}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   {/* Category Badge on Card */}
                   <span className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
                     {article.category}

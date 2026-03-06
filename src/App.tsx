@@ -11,22 +11,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
-        <header className="bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">知识平台</h1>
+      <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
+        <header className="bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center transition-colors duration-200 sticky top-0 z-50">
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">知识平台</h1>
           <nav>
-            <ul className="flex space-x-4">
-              <li><Link to="/" className="hover:text-blue-500">首页</Link></li>
-              <li><Link to="/articles" className="hover:text-blue-500">文章</Link></li>
-              <li><Link to="/about" className="hover:text-blue-500">关于</Link></li>
-              {/* <li>
+            <ul className="flex space-x-4 items-center">
+              <li><Link to="/" className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 font-medium">首页</Link></li>
+              <li><Link to="/articles" className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 font-medium">文章</Link></li>
+              <li><Link to="/about" className="text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 font-medium">关于</Link></li>
+              <li>
                 <button
                   onClick={() => setDarkMode(!darkMode)}
-                  className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
+                  className="px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
                 >
-                  {darkMode ? '亮色模式' : '暗色模式'}
+                  {darkMode ? '🌞 亮色' : '🌙 暗色'}
                 </button>
-              </li> */}
+              </li>
             </ul>
           </nav>
         </header>
