@@ -76,7 +76,7 @@ export default function About() {
         </div>
 
         {/* Tech Stack Section */}
-        <div className="bg-white dark:bg-gray-800 shadow rounded-2xl overflow-hidden">
+        {/* <div className="bg-white dark:bg-gray-800 shadow rounded-2xl overflow-hidden">
           <div className="px-6 py-8 sm:p-10">
             <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white mb-6">
               技术栈
@@ -89,7 +89,7 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-10 text-center">
           <Link to="/" className="text-blue-600 hover:text-blue-500 font-medium flex items-center justify-center">

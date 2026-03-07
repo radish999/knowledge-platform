@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
+import { Analytics } from '@vercel/analytics/react';
 import { darkModeAtom } from './store';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/about" element={<About />} />
           </Routes>
         </main>
+        <Analytics />
       </div>
     </BrowserRouter>
   );
