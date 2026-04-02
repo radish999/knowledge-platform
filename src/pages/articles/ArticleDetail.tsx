@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { articles } from '../../data/articles';
+import type { ComponentPropsWithoutRef } from 'react';
 import { useState, useEffect } from 'react';
 
 // TOC Item Component
@@ -24,40 +26,38 @@ const TocItem = ({ level, text, id, activeId }: { level: number; text: string; i
   );
 };
 
+const getToc = (body: string) => {
+  if (!body) return [];
+  return body
+    .split('\n')
+    .filter((line) => line.startsWith('#'))
+    .map((line) => {
+      const match = line.match(/^(#{1,6})\s+(.+)$/);
+      if (!match) return null;
+
+      const level = match[1].length;
+      const text = match[2];
+      const id = text
+        .toLowerCase()
+        .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+      return { level, text, id };
+    })
+    .filter((item): item is { level: number; text: string; id: string } => item !== null);
+};
+
 export default function ArticleDetail() {
   const { slug } = useParams<{ slug: string }>();
   const article = articles.find((a) => a.slug === slug);
   const [activeId, setActiveId] = useState<string>('');
-  const [toc, setToc] = useState<{ level: number; text: string; id: string }[]>([]);
 
-  // Generate TOC from markdown content
-  useEffect(() => {
-    if (!article?.body) return;
-
-    const lines = article.body.split('\n');
-    const headings = lines
-      .filter((line) => line.startsWith('#'))
-      .map((line) => {
-        const match = line.match(/^(#{1,6})\s+(.+)$/);
-        if (!match) return null;
-        
-        const level = match[1].length;
-        const text = match[2];
-        // Create a simple slug for the id
-        const id = text
-          .toLowerCase()
-          .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
-          .replace(/^-+|-+$/g, '');
-        
-        return { level, text, id };
-      })
-      .filter((item): item is { level: number; text: string; id: string } => item !== null);
-
-    setToc(headings);
-  }, [article]);
+  const articleBody = article?.body ?? '';
+  const toc = getToc(articleBody);
 
   // Handle scroll spy
   useEffect(() => {
+    const headings = getToc(articleBody);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,13 +69,13 @@ export default function ArticleDetail() {
       { rootMargin: '-20% 0px -35% 0px' }
     );
 
-    toc.forEach((item) => {
+    headings.forEach((item) => {
       const element = document.getElementById(item.id);
       if (element) observer.observe(element);
     });
 
     return () => observer.disconnect();
-  }, [toc]);
+  }, [articleBody]);
 
   if (!article) {
     return (
@@ -88,19 +88,40 @@ export default function ArticleDetail() {
     );
   }
 
+  const toHeadingId = (value: unknown) => {
+    return String(value ?? '')
+      .toLowerCase()
+      .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
   // Custom renderer for headings to add IDs
-  const components = {
-    h1: ({ children }: any) => {
-      const id = children?.toString().toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-+|-+$/g, '');
-      return <h1 id={id} className="scroll-mt-20">{children}</h1>;
+  type HeadingProps = ComponentPropsWithoutRef<'h1'> & { node?: unknown };
+
+  const components: Components = {
+    h1: ({ children, ...props }: HeadingProps) => {
+      const id = toHeadingId(children);
+      return (
+        <h1 {...props} id={id} className="scroll-mt-20">
+          {children}
+        </h1>
+      );
     },
-    h2: ({ children }: any) => {
-      const id = children?.toString().toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-+|-+$/g, '');
-      return <h2 id={id} className="scroll-mt-20">{children}</h2>;
+    h2: ({ children, ...props }: HeadingProps) => {
+      const id = toHeadingId(children);
+      return (
+        <h2 {...props} id={id} className="scroll-mt-20">
+          {children}
+        </h2>
+      );
     },
-    h3: ({ children }: any) => {
-      const id = children?.toString().toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-+|-+$/g, '');
-      return <h3 id={id} className="scroll-mt-20">{children}</h3>;
+    h3: ({ children, ...props }: HeadingProps) => {
+      const id = toHeadingId(children);
+      return (
+        <h3 {...props} id={id} className="scroll-mt-20">
+          {children}
+        </h3>
+      );
     },
   };
 

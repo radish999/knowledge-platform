@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import imgQr from './wechat-qr.jpg';
 
 export default function About() {
-  const apkUrl = 'https://expo.dev/artifacts/eas/9vFbZkAbGcJS6Ft1DwXmi.apk';
-  const apkBuildUrl = 'https://expo.dev/accounts/radishmeng/projects/project-rn/builds/01303d0a-ea0b-4d0e-9a6a-1dc459cd8695';
+  const apkUrl = 'https://expo.dev/artifacts/eas/stR72GWnhDsNNManzrVy6J.apk';
+  const apkBuildUrl = 'https://expo.dev/accounts/radishmeng/projects/project-rn/builds/d670f2c6-3d90-42cf-a4e5-e3ae2ae6b304';
   const apkQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data=${encodeURIComponent(apkUrl)}`;
 
   return (
@@ -24,14 +24,13 @@ export default function About() {
             <div className="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] lg:items-center">
               <div>
                 <p className="inline-flex items-center rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
-                  Android Download
+                  音乐 App · Android
                 </p>
                 <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Radish Music test build
+                  Radish Music（测试版）
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-                  Since Huawei AppGallery review did not pass yet, you can install the Android test package
-                  directly from this page. Scan the QR code on your phone or open the direct download link.
+                  这是一个音乐 App（Radish Music）的 Android 测试包。你可以在此页面直接下载安装；用手机扫码或打开直链下载即可。
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
@@ -41,7 +40,7 @@ export default function About() {
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
                   >
-                    Download APK
+                    下载 APK
                   </a>
                   <a
                     href={apkBuildUrl}
@@ -49,17 +48,17 @@ export default function About() {
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-200"
                   >
-                    View Build
+                    查看构建
                   </a>
                 </div>
 
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Package</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">包名</p>
                     <p className="mt-2 text-sm font-semibold text-white">com.sugar.radishMusic</p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Build</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">构建号</p>
                     <p className="mt-2 text-sm font-semibold text-white">Preview APK 01303d0a</p>
                   </div>
                 </div>
@@ -73,11 +72,11 @@ export default function About() {
                 <div className="rounded-[2rem] border border-white/10 bg-white p-5 shadow-[0_25px_80px_rgba(34,211,238,0.18)]">
                   <img
                     src={apkQrUrl}
-                    alt="QR code for downloading the Android APK"
+                    alt="Android APK 下载二维码"
                     className="w-full rounded-2xl"
                   />
                   <div className="mt-4 rounded-2xl bg-slate-100 px-4 py-3 text-center">
-                    <p className="text-sm font-semibold text-slate-900">Scan to install on Android</p>
+                    <p className="text-sm font-semibold text-slate-900">扫码下载并安装</p>
                     <p className="mt-1 text-xs text-slate-500">建议直接用手机浏览器扫码打开，下载链路更顺。</p>
                   </div>
                 </div>
@@ -105,7 +104,7 @@ export default function About() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">Email</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">邮箱</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">radishmengpig@gmail.com</p>
                   </div>
                 </div>
@@ -133,7 +132,7 @@ export default function About() {
                   {/* Placeholder for QR Code */}
                   <img 
                     src={imgQr} 
-                    alt="WeChat QR Code" 
+                    alt="微信二维码" 
                     className="w-full h-full object-contain"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200x200?text=WeChat+QR';

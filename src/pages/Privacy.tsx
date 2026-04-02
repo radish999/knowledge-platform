@@ -2,57 +2,57 @@ import { Link } from 'react-router-dom';
 
 const sections = [
   {
-    title: '1. Information We Collect',
+    title: '1. 我们收集的信息',
     body: [
-      'We may collect limited information that is necessary to operate and improve the service, including device details, app version, runtime logs, crash logs, and the content you actively submit through feedback or contact channels.',
-      'When you use playback and search related features, the service may also process track selections, playback status, progress, and search keywords to provide core music functionality.',
+      '我们可能会收集为提供与改进服务所必需的有限信息，包括设备信息、应用版本、运行日志、崩溃日志，以及你通过反馈或联系方式主动提交的内容。',
+      '当你使用文章浏览、搜索、主题切换等功能时，服务可能会处理你的搜索关键词、页面访问与交互状态，用于提供核心功能与优化体验。',
     ],
   },
   {
-    title: '2. How We Use Information',
+    title: '2. 信息如何使用',
     body: [
-      'We use information to provide playback, search, and content browsing features, improve stability and performance, diagnose errors, and respond to your support requests.',
-      'We do not sell your personal information.',
+      '我们使用上述信息以提供内容浏览与搜索功能、提升稳定性与性能、诊断错误，并响应你的支持请求。',
+      '我们不会出售你的个人信息。',
     ],
   },
   {
-    title: '3. Third-Party Services',
+    title: '3. 第三方服务',
     body: [
-      'The app may rely on public third-party music services such as Jamendo to retrieve tracks, artwork, and metadata. Requests sent to those services are subject to their own privacy practices.',
-      'Relevant service: Jamendo, https://www.jamendo.com, Privacy Policy: https://www.jamendo.com/privacy',
+      '为实现统计分析与基础功能，本服务可能会使用第三方服务（例如 Vercel Analytics）。这些服务对数据的处理受其各自隐私政策约束。',
+      '相关服务：Vercel Analytics，https://vercel.com/analytics',
     ],
   },
   {
-    title: '4. Permissions',
+    title: '4. 权限说明',
     body: [
-      'The app may request network permission to load online tracks and related media. Audio-related permissions may be requested only where required by functionality or platform compatibility.',
-      'Permissions are used only within the scope necessary for the relevant feature.',
+      '本服务可能需要网络权限以加载页面与在线资源。',
+      '权限仅在实现相应功能所必需的范围内使用。',
     ],
   },
   {
-    title: '5. Sharing and Disclosure',
+    title: '5. 共享与披露',
     body: [
-      'We do not publicly disclose or transfer personal information except where necessary to provide core service functionality, where required by law, or where you have explicitly consented.',
+      '除非为实现核心功能所必需、法律法规要求或你已明确同意，否则我们不会公开披露或转移你的个人信息。',
     ],
   },
   {
-    title: '6. Data Security',
+    title: '6. 数据安全',
     body: [
-      'We take reasonable technical and organizational measures to protect data from unauthorized access, alteration, disclosure, or loss. However, no internet-based system can be guaranteed to be completely secure.',
+      '我们采取合理的技术与组织措施保护数据免遭未经授权的访问、篡改、披露或丢失。但任何互联网系统都无法保证绝对安全。',
     ],
   },
   {
-    title: '7. Your Rights',
+    title: '7. 你的权利',
     body: [
-      'Subject to applicable law, you may request access to, correction of, or deletion of information we process about you, and you may contact us with privacy-related questions.',
+      '在适用法律允许的范围内，你可以请求访问、更正或删除我们处理的与你相关的信息，并可就隐私相关问题与我们联系。',
     ],
   },
   {
-    title: '8. Contact',
+    title: '8. 联系我们',
     body: [
-      'Operator: Radish Music',
-      'Website: https://www.goodbai.baby/',
-      'Contact Email: radishmengpig@gmail.com',
+      '运营方：知识平台',
+      '网站：https://www.goodbai.baby/',
+      '联系邮箱：radishmengpig@gmail.com',
     ],
   },
 ];
@@ -62,17 +62,16 @@ export default function Privacy() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-4 py-12">
       <div className="mx-auto max-w-4xl rounded-3xl bg-white p-8 shadow-sm dark:bg-gray-800 md:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-blue-600 dark:text-blue-400">
-          Legal
+          法律
         </p>
         <h1 className="mt-4 text-4xl font-extrabold text-gray-900 dark:text-white">
-          Privacy Policy
+          隐私政策
         </h1>
         <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          Last updated: April 2, 2026
+          最后更新：2026年4月2日
         </p>
         <p className="mt-6 text-base leading-8 text-gray-700 dark:text-gray-300">
-          This Privacy Policy explains how Radish Music collects, uses, stores, and protects
-          information when you access services provided through
+          本隐私政策说明当你访问并使用
           {' '}
           <a
             href="https://www.goodbai.baby/"
@@ -82,7 +81,8 @@ export default function Privacy() {
           >
             goodbai.baby
           </a>
-          .
+          {' '}
+          提供的服务时，我们如何收集、使用、存储与保护信息。
         </p>
 
         <div className="mt-10 space-y-10">
@@ -105,13 +105,13 @@ export default function Privacy() {
             to="/terms"
             className="rounded-full bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300"
           >
-            Read Terms of Service
+            阅读服务条款
           </Link>
           <Link
             to="/"
             className="text-sm font-semibold text-blue-600 hover:text-blue-500 dark:text-blue-400"
           >
-            Back to Home
+            返回首页
           </Link>
         </div>
       </div>

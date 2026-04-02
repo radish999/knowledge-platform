@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { categoryColors, getCategory } from '../utils/category';
 
 interface ArticleCoverProps {
@@ -8,18 +8,21 @@ interface ArticleCoverProps {
   category?: string; // Optional, if already calculated
 }
 
-export default function ArticleCover({ title, cover, className = "", category }: ArticleCoverProps) {
+function ArticleCoverInner({
+  title,
+  cover,
+  className,
+  articleCategory,
+  gradientClass,
+}: {
+  title: string;
+  cover?: string | null;
+  className: string;
+  articleCategory: string;
+  gradientClass: string;
+}) {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // If cover changes, reset error state
-  useEffect(() => {
-    setHasError(false);
-    setIsLoaded(false);
-  }, [cover]);
-
-  const articleCategory = category || getCategory(title);
-  const gradientClass = categoryColors[articleCategory] || categoryColors['其他'];
 
   if (cover && !hasError) {
     return (
@@ -48,5 +51,21 @@ export default function ArticleCover({ title, cover, className = "", category }:
         {articleCategory}
       </span>
     </div>
+  );
+}
+
+export default function ArticleCover({ title, cover, className = "", category }: ArticleCoverProps) {
+  const articleCategory = category || getCategory(title);
+  const gradientClass = categoryColors[articleCategory] || categoryColors['其他'];
+
+  return (
+    <ArticleCoverInner
+      key={cover || 'fallback'}
+      title={title}
+      cover={cover}
+      className={className}
+      articleCategory={articleCategory}
+      gradientClass={gradientClass}
+    />
   );
 }

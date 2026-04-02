@@ -2,53 +2,53 @@ import { Link } from 'react-router-dom';
 
 const sections = [
   {
-    title: '1. Service Description',
+    title: '1. 服务说明',
     body: [
-      'Radish Music provides audio browsing, search, playback, and related metadata display features through the service available at goodbai.baby and related app experiences.',
+      '知识平台通过 goodbai.baby 及相关应用体验提供内容浏览、搜索与阅读等功能。',
     ],
   },
   {
-    title: '2. Acceptable Use',
+    title: '2. 合理使用',
     body: [
-      'You agree not to misuse the service, interfere with its operation, attempt unauthorized access, or use the service in violation of applicable law.',
+      '你同意不滥用本服务、不干扰其正常运行、不尝试未授权访问，并遵守适用法律法规。',
     ],
   },
   {
-    title: '3. Third-Party Content',
+    title: '3. 第三方内容',
     body: [
-      'Some music, artwork, and metadata may come from third-party sources. Availability and licensing of such content are controlled by their respective providers, and we do not guarantee uninterrupted access to that content.',
+      '部分内容、图片或外部链接可能来源于第三方。此类内容的可用性与授权由其提供方控制，我们不保证第三方内容的持续可用。',
     ],
   },
   {
-    title: '4. Intellectual Property',
+    title: '4. 知识产权',
     body: [
-      'The website, interface, brand assets, and app logic belong to us or our licensors. Third-party tracks and artwork remain subject to their own rights holders and license terms.',
+      '网站界面、品牌资源与应用逻辑等归我们或相关权利人所有。第三方内容仍受其各自权利人与许可条款约束。',
     ],
   },
   {
-    title: '5. Disclaimer',
+    title: '5. 免责声明',
     body: [
-      'The service is provided on an "as is" and "as available" basis. We do not guarantee uninterrupted availability, complete accuracy, or fitness for every specific use case.',
+      '本服务按“现状”与“可用性”提供。我们不保证服务不间断、信息完全准确或适用于所有特定用途。',
     ],
   },
   {
-    title: '6. Limitation of Liability',
+    title: '6. 责任限制',
     body: [
-      'To the fullest extent permitted by law, we are not liable for indirect, incidental, or consequential damages arising from your use of the service.',
+      '在法律允许的最大范围内，对于你使用本服务所产生的间接、附带或后果性损失，我们不承担责任。',
     ],
   },
   {
-    title: '7. Changes',
+    title: '7. 条款变更',
     body: [
-      'We may update these terms from time to time. Continued use of the service after an update takes effect constitutes acceptance of the revised terms.',
+      '我们可能不时更新本条款。更新生效后继续使用本服务，即视为你接受修订后的条款。',
     ],
   },
   {
-    title: '8. Contact',
+    title: '8. 联系我们',
     body: [
-      'Operator: Radish Music',
-      'Website: https://www.goodbai.baby/',
-      'Contact Email: radishmengpig@gmail.com',
+      '运营方：知识平台',
+      '网站：https://www.goodbai.baby/',
+      '联系邮箱：radishmengpig@gmail.com',
     ],
   },
 ];
@@ -58,17 +58,16 @@ export default function Terms() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-4 py-12">
       <div className="mx-auto max-w-4xl rounded-3xl bg-white p-8 shadow-sm dark:bg-gray-800 md:p-12">
         <p className="text-sm font-semibold uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-400">
-          Legal
+          法律
         </p>
         <h1 className="mt-4 text-4xl font-extrabold text-gray-900 dark:text-white">
-          Terms of Service
+          服务条款
         </h1>
         <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-          Last updated: April 2, 2026
+          最后更新：2026年4月2日
         </p>
         <p className="mt-6 text-base leading-8 text-gray-700 dark:text-gray-300">
-          These Terms of Service govern your access to and use of Radish Music services provided
-          through
+          本服务条款适用于你访问并使用
           {' '}
           <a
             href="https://www.goodbai.baby/"
@@ -78,7 +77,8 @@ export default function Terms() {
           >
             goodbai.baby
           </a>
-          .
+          {' '}
+          提供的相关服务。
         </p>
 
         <div className="mt-10 space-y-10">
@@ -101,13 +101,13 @@ export default function Terms() {
             to="/privacy"
             className="rounded-full bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-300"
           >
-            Read Privacy Policy
+            阅读隐私政策
           </Link>
           <Link
             to="/"
             className="text-sm font-semibold text-blue-600 hover:text-blue-500 dark:text-blue-400"
           >
-            Back to Home
+            返回首页
           </Link>
         </div>
       </div>
