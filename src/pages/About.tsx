@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom';
 import imgQr from './wechat-qr.jpg';
 
 export default function About() {
+  const apkUrl = 'https://expo.dev/artifacts/eas/9vFbZkAbGcJS6Ft1DwXmi.apk';
+  const apkBuildUrl = 'https://expo.dev/accounts/radishmeng/projects/project-rn/builds/01303d0a-ea0b-4d0e-9a6a-1dc459cd8695';
+  const apkQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data=${encodeURIComponent(apkUrl)}`;
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -13,6 +17,73 @@ export default function About() {
           <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500 dark:text-gray-400">
             专注于技术分享与知识沉淀，构建优质的阅读体验。
           </p>
+        </div>
+
+        <div className="mb-12 overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-[0_30px_100px_rgba(15,23,42,0.45)]">
+          <div className="px-6 py-8 sm:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] lg:items-center">
+              <div>
+                <p className="inline-flex items-center rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
+                  Android Download
+                </p>
+                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                  Radish Music test build
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+                  Since Huawei AppGallery review did not pass yet, you can install the Android test package
+                  directly from this page. Scan the QR code on your phone or open the direct download link.
+                </p>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href={apkUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+                  >
+                    Download APK
+                  </a>
+                  <a
+                    href={apkBuildUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-200"
+                  >
+                    View Build
+                  </a>
+                </div>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Package</p>
+                    <p className="mt-2 text-sm font-semibold text-white">com.sugar.radishMusic</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Build</p>
+                    <p className="mt-2 text-sm font-semibold text-white">Preview APK 01303d0a</p>
+                  </div>
+                </div>
+
+                <p className="mt-4 text-xs leading-6 text-slate-400">
+                  如果系统拦截安装，请先在手机浏览器或文件管理器中允许安装未知来源应用，再重新打开安装包。
+                </p>
+              </div>
+
+              <div className="mx-auto w-full max-w-xs">
+                <div className="rounded-[2rem] border border-white/10 bg-white p-5 shadow-[0_25px_80px_rgba(34,211,238,0.18)]">
+                  <img
+                    src={apkQrUrl}
+                    alt="QR code for downloading the Android APK"
+                    className="w-full rounded-2xl"
+                  />
+                  <div className="mt-4 rounded-2xl bg-slate-100 px-4 py-3 text-center">
+                    <p className="text-sm font-semibold text-slate-900">Scan to install on Android</p>
+                    <p className="mt-1 text-xs text-slate-500">建议直接用手机浏览器扫码打开，下载链路更顺。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Contact Section */}
