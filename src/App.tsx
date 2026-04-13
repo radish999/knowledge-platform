@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useAtom } from 'jotai';
-import { Analytics } from '@vercel/analytics/react';
 import { darkModeAtom } from './store';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -8,6 +7,7 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import ArticleList from './pages/articles/ArticleList';
 import ArticleDetail from './pages/articles/ArticleDetail';
+import DeveloperTraffic from './pages/DeveloperTraffic';
 
 function App() {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
@@ -41,9 +41,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/pv" element={<DeveloperTraffic />} />
           </Routes>
         </main>
-        <Analytics />
       </div>
     </BrowserRouter>
   );
