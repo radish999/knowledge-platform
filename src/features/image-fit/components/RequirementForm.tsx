@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import type { ImageRequirement, OutputFormat } from '../types';
+import { IMAGE_PRESETS } from '../presets';
 
 interface RequirementFormProps {
   originalWidth: number;
@@ -22,15 +23,32 @@ export default function RequirementForm({
   const [width, setWidth] = useState(originalWidth);
   const [height, setHeight] = useState(originalHeight);
   const [keepAspectRatio, setKeepAspectRatio] = useState(true);
+  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
   const ratio = originalWidth / originalHeight;
+  const selectedPreset = IMAGE_PRESETS.find((preset) => preset.id === selectedPresetId);
+
+  const markCustom = () => setSelectedPresetId(null);
+
+  const applyPreset = (presetId: string) => {
+    const preset = IMAGE_PRESETS.find((candidate) => candidate.id === presetId);
+    if (!preset) return;
+    setSelectedPresetId(preset.id);
+    setFormat(preset.format);
+    setMaxSizeKB(preset.maxSizeKB);
+    setWidth(preset.width);
+    setHeight(preset.height);
+    setKeepAspectRatio(false);
+  };
 
   const updateWidth = (value: number) => {
+    markCustom();
     const normalized = normalizeDimension(value);
     setWidth(normalized);
     if (keepAspectRatio) setHeight(Math.max(1, Math.round(normalized / ratio)));
   };
 
   const updateHeight = (value: number) => {
+    markCustom();
     const normalized = normalizeDimension(value);
     setHeight(normalized);
     if (keepAspectRatio) setWidth(Math.max(1, Math.round(normalized * ratio)));
@@ -46,6 +64,7 @@ export default function RequirementForm({
       width: normalizeDimension(width),
       height: normalizeDimension(height),
       keepAspectRatio,
+      presetName: selectedPreset?.name,
     });
   };
 
@@ -59,6 +78,25 @@ export default function RequirementForm({
         <span className="if-local-chip">本地处理</span>
       </div>
 
+      <fieldset className="if-field-group if-preset-group">
+        <legend>合规预设</legend>
+        <div className="if-preset-grid">
+          {IMAGE_PRESETS.map((preset) => (
+            <button
+              key={preset.id}
+              type="button"
+              className={selectedPresetId === preset.id ? 'selected' : ''}
+              aria-pressed={selectedPresetId === preset.id}
+              onClick={() => applyPreset(preset.id)}
+            >
+              <span className="if-preset-name">{preset.name}</span>
+              <span>{preset.width} × {preset.height}</span>
+              <span>{preset.format === 'image/jpeg' ? 'JPG' : 'WebP'} · ≤ {preset.maxSizeKB}KB</span>
+            </button>
+          ))}
+        </div>
+      </fieldset>
+
       <fieldset className="if-field-group">
         <legend>输出格式</legend>
         <div className="if-segmented-control">
@@ -69,7 +107,10 @@ export default function RequirementForm({
                 name="format"
                 value={value}
                 checked={format === value}
-                onChange={() => setFormat(value)}
+                onChange={() => {
+                  markCustom();
+                  setFormat(value);
+                }}
               />
               {value === 'image/jpeg' ? 'JPG' : 'WebP'}
             </label>
@@ -87,7 +128,10 @@ export default function RequirementForm({
             min="1"
             step="1"
             required
-            onChange={(event) => setMaxSizeKB(event.target.valueAsNumber)}
+            onChange={(event) => {
+              markCustom();
+              setMaxSizeKB(event.target.valueAsNumber);
+            }}
           />
           <span>KB</span>
         </div>
@@ -97,7 +141,10 @@ export default function RequirementForm({
               key={size}
               type="button"
               className={maxSizeKB === size ? 'selected' : ''}
-              onClick={() => setMaxSizeKB(size)}
+              onClick={() => {
+                markCustom();
+                setMaxSizeKB(size);
+              }}
             >
               {size}KB
             </button>
@@ -145,12 +192,13 @@ export default function RequirementForm({
           checked={keepAspectRatio}
           onChange={(event) => {
             const checked = event.target.checked;
+            markCustom();
             setKeepAspectRatio(checked);
             if (checked) setHeight(Math.max(1, Math.round(width / ratio)));
           }}
         />
         <span aria-hidden="true" />
-        保持原图比例
+        {keepAspectRatio ? '保持原图比例' : '居中裁剪到精确尺寸'}
       </label>
 
       <button className="if-primary-button" type="submit" disabled={processing}>

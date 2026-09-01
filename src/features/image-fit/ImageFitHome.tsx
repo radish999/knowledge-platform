@@ -127,7 +127,7 @@ export default function ImageFitHome() {
           <ResultCard
             result={result}
             previewUrl={resultUrl}
-            targetKB={lastRequirement.maxSizeKB}
+            requirement={lastRequirement}
             onDownload={() => selected && downloadBlob(result.blob, selected.metadata.name, result.format)}
             onReprocess={reprocess}
             onRestart={restart}

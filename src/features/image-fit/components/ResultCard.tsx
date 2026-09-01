@@ -1,10 +1,10 @@
 import { formatFileSize, formatLabel } from '../image-utils';
-import type { CompressionResult } from '../types';
+import type { CompressionResult, ImageRequirement } from '../types';
 
 interface ResultCardProps {
   result: CompressionResult;
   previewUrl: string;
-  targetKB: number;
+  requirement: ImageRequirement;
   onDownload: () => void;
   onRestart: () => void;
   onReprocess: () => void;
@@ -13,7 +13,7 @@ interface ResultCardProps {
 export default function ResultCard({
   result,
   previewUrl,
-  targetKB,
+  requirement,
   onDownload,
   onRestart,
   onReprocess,
@@ -27,7 +27,7 @@ export default function ResultCard({
         <div>
           <span className="if-step-label">完成</span>
           <h2 id="result-title">处理完成</h2>
-          <p>图片已经按目标要求生成，可以直接下载使用。</p>
+          <p>{requirement.presetName ? `已通过“${requirement.presetName}”预设检查。` : '图片已经按自定义要求生成。'}</p>
         </div>
       </div>
 
@@ -40,13 +40,13 @@ export default function ResultCard({
             <div><dt>文件大小</dt><dd>{formatFileSize(result.blob.size)}</dd></div>
             <div><dt>图片尺寸</dt><dd>{result.width} × {result.height}</dd></div>
             <div><dt>格式</dt><dd>{formatLabel(result.format)}</dd></div>
-            <div><dt>目标大小</dt><dd className="success">≤ {targetKB} KB</dd></div>
+            <div><dt>目标要求</dt><dd className="success">≤ {requirement.maxSizeKB} KB</dd></div>
           </dl>
 
           <ul className="if-check-list">
-            <li><span>✓</span> 文件大小已处理</li>
-            <li><span>✓</span> 输出格式正确</li>
-            <li><span>✓</span> 图片尺寸已处理</li>
+            <li><span>✓</span> 文件大小 ≤ {requirement.maxSizeKB}KB</li>
+            <li><span>✓</span> 输出格式为 {formatLabel(requirement.format)}</li>
+            <li><span>✓</span> 图片尺寸 {result.width} × {result.height}</li>
             <li><span>✓</span> 浏览器本地处理</li>
           </ul>
 

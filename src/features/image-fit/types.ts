@@ -6,6 +6,16 @@ export interface ImageRequirement {
   width: number;
   height: number;
   keepAspectRatio: boolean;
+  presetName?: string;
+}
+
+export interface ImagePreset {
+  id: string;
+  name: string;
+  format: OutputFormat;
+  maxSizeKB: number;
+  width: number;
+  height: number;
 }
 
 export interface ImageMetadata {
