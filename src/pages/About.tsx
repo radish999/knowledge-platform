@@ -2,10 +2,6 @@ import { Link } from 'react-router-dom';
 import imgQr from './wechat-qr.jpg';
 
 export default function About() {
-  const androidBuildsUrl = 'https://expo.dev/accounts/radishmeng/projects/project-rn/builds';
-  const apkBuildUrl = 'https://expo.dev/accounts/radishmeng/projects/project-rn/builds';
-  const apkQrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=12&data=${encodeURIComponent(androidBuildsUrl)}`;
-
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -17,72 +13,6 @@ export default function About() {
           <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500 dark:text-gray-400">
             专注于技术分享与知识沉淀，构建优质的阅读体验。
           </p>
-        </div>
-
-        <div className="mb-12 overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-[0_30px_100px_rgba(15,23,42,0.45)]">
-          <div className="px-6 py-8 sm:p-10">
-            <div className="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] lg:items-center">
-              <div>
-                <p className="inline-flex items-center rounded-full bg-cyan-400/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
-                  知识平台 · Android
-                </p>
-                <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                  知识平台移动端（测试版）
-                </h2>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-                  这是知识平台 React Native 容器版的 Android 测试包下载入口。点击后会进入当前项目的构建页，你可以下载安装最新的 Android Preview APK，在移动端浏览知识平台内容。
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href={androidBuildsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
-                  >
-                    下载 Android 版本
-                  </a>
-                  <a
-                    href={apkBuildUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-200"
-                  >
-                    查看构建
-                  </a>
-                </div>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">包名</p>
-                    <p className="mt-2 text-sm font-semibold text-white">com.sugar.knowledgeplatform</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-slate-400">说明</p>
-                    <p className="mt-2 text-sm font-semibold text-white">从构建页选择最新 Preview APK</p>
-                  </div>
-                </div>
-
-                <p className="mt-4 text-xs leading-6 text-slate-400">
-                  如果系统拦截安装，请先在手机浏览器或文件管理器中允许安装未知来源应用，再重新打开安装包。若构建页中没有可下载 APK，需要先发布新的 Android Preview 构建。
-                </p>
-              </div>
-
-              <div className="mx-auto w-full max-w-xs">
-                <div className="rounded-[2rem] border border-white/10 bg-white p-5 shadow-[0_25px_80px_rgba(34,211,238,0.18)]">
-                  <img
-                    src={apkQrUrl}
-                    alt="Android APK 下载二维码"
-                    className="w-full rounded-2xl"
-                  />
-                  <div className="mt-4 rounded-2xl bg-slate-100 px-4 py-3 text-center">
-                    <p className="text-sm font-semibold text-slate-900">扫码打开 Android 构建页</p>
-                    <p className="mt-1 text-xs text-slate-500">进入后选择最新的 Preview APK 下载安装。</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Contact Section */}

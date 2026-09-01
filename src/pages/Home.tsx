@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { articles } from '../data/articles';
 import ArticleCover from '../components/ArticleCover';
+import Seo from '../components/Seo';
 
 export default function Home() {
   // Get recent 3 articles
@@ -8,6 +9,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Seo
+        title="知识平台 - 技术文章与工程笔记 | GoodBai"
+        description="GoodBai 知识平台收录前端开发、React、JavaScript、工程化与安全等技术文章和工程笔记。"
+        path="/knowledge"
+        structuredData={{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'GoodBai 知识平台' }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">

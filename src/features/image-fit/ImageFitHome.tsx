@@ -6,6 +6,7 @@ import type { CompressionResult, ImageRequirement, SelectedImage } from './types
 import ImageUploader from './components/ImageUploader';
 import RequirementForm from './components/RequirementForm';
 import ResultCard from './components/ResultCard';
+import Seo from '../../components/Seo';
 import './image-fit.css';
 
 export default function ImageFitHome() {
@@ -87,6 +88,20 @@ export default function ImageFitHome() {
 
   return (
     <div className="image-fit-page">
+      <Seo
+        title="ImageFit - 免费在线图片压缩与尺寸调整工具"
+        description="免费在线压缩图片到指定 KB，调整宽高并转换为 JPG 或 WebP。图片仅在浏览器本地处理，不会上传服务器。"
+        path="/"
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          name: 'ImageFit',
+          url: 'https://www.goodbai.baby/',
+          applicationCategory: 'UtilitiesApplication',
+          operatingSystem: 'Any',
+          isAccessibleForFree: true,
+        }}
+      />
       <main className="if-main">
         <section className="if-intro" aria-labelledby="imagefit-title">
           <div className="if-eyebrow"><span /> ImageFit 图片上传合规助手</div>
