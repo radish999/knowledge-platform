@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useAtom } from 'jotai';
 import { darkModeAtom } from './store';
-import faviconUrl from '../favicon.png';
-import Home from './pages/Home';
-import About from './pages/About';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
-import ArticleList from './pages/articles/ArticleList';
-import ArticleDetail from './pages/articles/ArticleDetail';
-import DeveloperTraffic from './pages/DeveloperTraffic';
+import ImageFitHome from './features/image-fit/ImageFitHome';
+
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const ArticleList = lazy(() => import('./pages/articles/ArticleList'));
+const ArticleDetail = lazy(() => import('./pages/articles/ArticleDetail'));
+const DeveloperTraffic = lazy(() => import('./pages/DeveloperTraffic'));
 
 function App() {
   const [darkMode, setDarkMode] = useAtom(darkModeAtom);
@@ -28,8 +29,9 @@ function App() {
           <div className="mx-auto max-w-6xl">
             <div className="flex items-center justify-between gap-3">
               <Link to="/" className="flex items-center gap-2" onClick={closeMobileMenu}>
-                <img src={faviconUrl} alt="知识平台" className="h-7 w-7 shrink-0" />
-                <span className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">知识平台</span>
+                <img src="/favicon.svg" alt="ImageFit" className="h-8 w-8 shrink-0 rounded-lg" />
+                <span className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">ImageFit</span>
+                <span className="hidden rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-bold text-blue-600 sm:inline">GOODBAI</span>
               </Link>
 
               <div className="flex items-center gap-2 sm:hidden">
@@ -58,12 +60,17 @@ function App() {
                 <ul className="flex items-center gap-4">
                   <li>
                     <Link to="/" className={navLinkClassName}>
-                      首页
+                      图片助手
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/knowledge" className={navLinkClassName}>
+                      知识首页
                     </Link>
                   </li>
                   <li>
                     <Link to="/articles" className={navLinkClassName}>
-                      文章
+                      知识文章
                     </Link>
                   </li>
                   <li>
@@ -88,12 +95,17 @@ function App() {
                 <ul className="space-y-2">
                   <li>
                     <Link to="/" className={mobileLinkClassName} onClick={closeMobileMenu}>
-                      首页
+                      图片助手
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/knowledge" className={mobileLinkClassName} onClick={closeMobileMenu}>
+                      知识首页
                     </Link>
                   </li>
                   <li>
                     <Link to="/articles" className={mobileLinkClassName} onClick={closeMobileMenu}>
-                      文章
+                      知识文章
                     </Link>
                   </li>
                   <li>
@@ -106,16 +118,19 @@ function App() {
             ) : null}
           </div>
         </header>
-        <main className="container mx-auto pb-8 pt-4 sm:py-8">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<ArticleList />} />
-            <Route path="/articles/:slug" element={<ArticleDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/pv" element={<DeveloperTraffic />} />
-          </Routes>
+        <main>
+          <Suspense fallback={<div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500">正在加载…</div>}>
+            <Routes>
+              <Route path="/" element={<ImageFitHome />} />
+              <Route path="/knowledge" element={<Home />} />
+              <Route path="/articles" element={<ArticleList />} />
+              <Route path="/articles/:slug" element={<ArticleDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/pv" element={<DeveloperTraffic />} />
+            </Routes>
+          </Suspense>
         </main>
       </div>
     </BrowserRouter>

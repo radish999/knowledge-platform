@@ -1,13 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>K-Platform</title>
+    <meta
+      name="description"
+      content="ImageFit 是免费的在线图片压缩与尺寸调整工具。指定 KB、宽高及 JPG 或 WebP 格式，图片仅在浏览器本地处理，不会上传服务器。"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="GoodBai" />
+    <meta name="application-name" content="ImageFit" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://www.goodbai.baby/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="ImageFit · GoodBai" />
+    <meta property="og:title" content="ImageFit - 免费在线图片压缩与尺寸调整工具" />
+    <meta property="og:description" content="指定文件大小、尺寸和格式，在浏览器本地生成符合上传要求的图片。" />
+    <meta property="og:url" content="https://www.goodbai.baby/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ImageFit - 免费在线图片压缩与尺寸调整工具" />
+    <meta name="twitter:description" content="指定 KB、宽高及输出格式，图片仅在浏览器本地处理。" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ImageFit",
+        "url": "https://www.goodbai.baby/",
+        "description": "免费的在线图片压缩与尺寸调整工具，可指定文件大小、宽高及 JPG 或 WebP 输出格式。",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+        "inLanguage": "zh-CN",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+        "featureList": ["图片压缩到指定 KB", "调整图片宽度和高度", "转换为 JPG 或 WebP", "浏览器本地处理图片"]
+      }
+    </script>
+    <title>ImageFit - 免费在线图片压缩与尺寸调整工具</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main>
+        <h1>ImageFit 免费在线图片压缩与尺寸调整工具</h1>
+        <p>指定文件大小、图片宽高及 JPG 或 WebP 格式，在浏览器本地完成处理。</p>
+      </main>
+    </div>
+    <noscript>ImageFit 需要启用 JavaScript 才能在浏览器本地处理图片。</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

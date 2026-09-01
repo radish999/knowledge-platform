@@ -1,0 +1,13 @@
+{
+  "name": "ImageFit · GoodBai",
+  "short_name": "ImageFit",
+  "description": "在浏览器本地压缩图片、调整尺寸并转换格式。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#1769e0",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -1,4 +1,10 @@
-# React + TypeScript + Vite
+# GoodBai · ImageFit 与知识平台
+
+主站：[https://www.goodbai.baby/](https://www.goodbai.baby/)
+
+- `/`：ImageFit 图片上传合规助手，图片仅在浏览器本地处理
+- `/knowledge`：原知识平台首页
+- `/articles`：知识文章列表
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
