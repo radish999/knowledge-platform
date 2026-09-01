@@ -50,7 +50,7 @@ export default function About() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900 dark:text-white">Telegram</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">@bminghui</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">radishlei</p>
                   </div>
                 </div>
               </div>
