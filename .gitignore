@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+/knowledge.html
+/compress-to-100kb.html
+/compress-to-200kb.html
+/application-photo.html
+/one-inch-photo.html
+/avatar-compressor.html
+/jpg-to-webp.html

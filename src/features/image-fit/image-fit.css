@@ -132,6 +132,10 @@
 .if-result-actions { display: grid; grid-template-columns: 1.15fr .85fr; gap: 8px; }
 .if-result-actions .if-text-button { grid-column: 1 / -1; }
 
+.if-target-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px 16px; margin: 28px auto 0; color: #778399; font-size: 11px; }
+.if-target-links a { color: inherit; text-decoration: none; }
+.if-target-links a:hover, .if-target-links a[aria-current="page"] { color: var(--if-blue); text-decoration: underline; text-underline-offset: 3px; }
+
 .if-trust-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 54px 0 36px; background: var(--if-line); border: 1px solid var(--if-line); border-radius: 8px; overflow: hidden; }
 .if-trust-strip article { min-width: 0; display: flex; align-items: center; justify-content: center; gap: 13px; padding: 20px 14px; background: #f8fafc; }
 .if-feature-icon { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; color: var(--if-blue); background: var(--if-blue-soft); border-radius: 6px; font-size: 20px; font-weight: 700; }

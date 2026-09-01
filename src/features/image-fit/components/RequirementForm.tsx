@@ -7,6 +7,9 @@ interface RequirementFormProps {
   originalWidth: number;
   originalHeight: number;
   processing: boolean;
+  initialPresetId?: string;
+  initialMaxSizeKB?: number;
+  initialFormat?: OutputFormat;
   onProcess: (requirement: ImageRequirement) => void;
 }
 
@@ -16,14 +19,18 @@ export default function RequirementForm({
   originalWidth,
   originalHeight,
   processing,
+  initialPresetId,
+  initialMaxSizeKB,
+  initialFormat,
   onProcess,
 }: RequirementFormProps) {
-  const [format, setFormat] = useState<OutputFormat>('image/jpeg');
-  const [maxSizeKB, setMaxSizeKB] = useState(200);
-  const [width, setWidth] = useState(originalWidth);
-  const [height, setHeight] = useState(originalHeight);
-  const [keepAspectRatio, setKeepAspectRatio] = useState(true);
-  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
+  const initialPreset = IMAGE_PRESETS.find((preset) => preset.id === initialPresetId);
+  const [format, setFormat] = useState<OutputFormat>(initialPreset?.format ?? initialFormat ?? 'image/jpeg');
+  const [maxSizeKB, setMaxSizeKB] = useState(initialPreset?.maxSizeKB ?? initialMaxSizeKB ?? 200);
+  const [width, setWidth] = useState(initialPreset?.width ?? originalWidth);
+  const [height, setHeight] = useState(initialPreset?.height ?? originalHeight);
+  const [keepAspectRatio, setKeepAspectRatio] = useState(!initialPreset);
+  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(initialPreset?.id ?? null);
   const ratio = originalWidth / originalHeight;
   const selectedPreset = IMAGE_PRESETS.find((preset) => preset.id === selectedPresetId);
 

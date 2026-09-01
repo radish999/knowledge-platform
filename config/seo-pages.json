@@ -1,0 +1,88 @@
+{
+  "pages": [
+    {
+      "slug": "knowledge",
+      "path": "/knowledge",
+      "kind": "knowledge",
+      "title": "知识平台 - 技术文章与工程笔记 | GoodBai",
+      "description": "GoodBai 知识平台收录前端开发、React、JavaScript、工程化与安全等技术文章和工程笔记。",
+      "eyebrow": "GoodBai 知识平台",
+      "h1Line1": "探索更聪明的知识库",
+      "h1Line2": "",
+      "subtitle": "精选技术文章与工程笔记，专注阅读体验。"
+    },
+    {
+      "slug": "compress-to-100kb",
+      "path": "/compress-to-100kb",
+      "kind": "tool",
+      "title": "图片压缩到100KB以内 - 免费在线图片压缩 | ImageFit",
+      "description": "免费将 JPG、PNG、WebP 图片压缩到100KB以内，可同时调整尺寸。图片仅在浏览器本地处理，不会上传服务器。",
+      "eyebrow": "图片压缩到 100KB",
+      "h1Line1": "把图片压缩到",
+      "h1Line2": "100KB以内",
+      "subtitle": "保留尽可能高的画质，生成符合上传大小要求的图片。",
+      "initialMaxSizeKB": 100
+    },
+    {
+      "slug": "compress-to-200kb",
+      "path": "/compress-to-200kb",
+      "kind": "tool",
+      "title": "图片压缩到200KB以内 - 免费在线压缩工具 | ImageFit",
+      "description": "免费将照片压缩到200KB以内，支持 JPG、PNG、WebP 输入及尺寸调整，全程在浏览器本地完成。",
+      "eyebrow": "图片压缩到 200KB",
+      "h1Line1": "把照片压缩到",
+      "h1Line2": "200KB以内",
+      "subtitle": "指定尺寸和输出格式，一键生成可以上传的图片。",
+      "initialMaxSizeKB": 200
+    },
+    {
+      "slug": "application-photo",
+      "path": "/application-photo",
+      "kind": "tool",
+      "title": "报名照片压缩与尺寸调整 - 295×413像素 | ImageFit",
+      "description": "在线生成常用295×413像素 JPG 报名照片并压缩到100KB以内，居中裁剪且图片不上传服务器。",
+      "eyebrow": "常用报名照预设",
+      "h1Line1": "处理符合要求的",
+      "h1Line2": "报名上传照片",
+      "subtitle": "预设 295 × 413 像素、JPG、100KB以内。",
+      "presetId": "application-photo"
+    },
+    {
+      "slug": "one-inch-photo",
+      "path": "/one-inch-photo",
+      "kind": "tool",
+      "title": "一寸照片尺寸调整与压缩 - 295×413像素 | ImageFit",
+      "description": "将照片居中裁剪为常用一寸照295×413像素 JPG，并压缩到200KB以内，全程浏览器本地处理。",
+      "eyebrow": "标准一寸照预设",
+      "h1Line1": "生成标准尺寸的",
+      "h1Line2": "一寸上传照片",
+      "subtitle": "预设 295 × 413 像素、JPG、200KB以内。",
+      "presetId": "one-inch-photo"
+    },
+    {
+      "slug": "avatar-compressor",
+      "path": "/avatar-compressor",
+      "kind": "tool",
+      "title": "头像图片压缩与裁剪 - 在线方形头像工具 | ImageFit",
+      "description": "在线将图片居中裁剪为600×600方形头像并压缩到200KB以内，支持 JPG、PNG、WebP 输入。",
+      "eyebrow": "方形头像预设",
+      "h1Line1": "裁剪并压缩一张",
+      "h1Line2": "清晰的方形头像",
+      "subtitle": "预设 600 × 600 像素、JPG、200KB以内。",
+      "presetId": "square-avatar"
+    },
+    {
+      "slug": "jpg-to-webp",
+      "path": "/jpg-to-webp",
+      "kind": "tool",
+      "title": "JPG转WebP并压缩 - 免费在线图片格式转换 | ImageFit",
+      "description": "免费将 JPG 图片转换为 WebP 并压缩文件大小，可调整输出尺寸，图片不会上传服务器。",
+      "eyebrow": "JPG 转 WebP",
+      "h1Line1": "把 JPG 转换成",
+      "h1Line2": "更轻的 WebP",
+      "subtitle": "转换格式并控制文件大小，处理全部在浏览器本地完成。",
+      "initialMaxSizeKB": 200,
+      "initialFormat": "image/webp"
+    }
+  ]
+}

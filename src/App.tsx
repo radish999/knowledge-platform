@@ -3,6 +3,7 @@ import { lazy, Suspense, useState } from 'react';
 import { useAtom } from 'jotai';
 import { darkModeAtom } from './store';
 import ImageFitHome from './features/image-fit/ImageFitHome';
+import { TOOL_SEO_PAGES } from './features/image-fit/seo-pages';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -122,6 +123,9 @@ function App() {
           <Suspense fallback={<div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500">正在加载…</div>}>
             <Routes>
               <Route path="/" element={<ImageFitHome />} />
+              {TOOL_SEO_PAGES.map((page) => (
+                <Route key={page.path} path={page.path} element={<ImageFitHome page={page} />} />
+              ))}
               <Route path="/knowledge" element={<Home />} />
               <Route path="/articles" element={<ArticleList />} />
               <Route path="/articles/:slug" element={<ArticleDetail />} />

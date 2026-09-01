@@ -7,9 +7,16 @@ import ImageUploader from './components/ImageUploader';
 import RequirementForm from './components/RequirementForm';
 import ResultCard from './components/ResultCard';
 import Seo from '../../components/Seo';
+import { Link } from 'react-router-dom';
+import { TOOL_SEO_PAGES } from './seo-pages';
+import type { ToolSeoPage } from './seo-pages';
 import './image-fit.css';
 
-export default function ImageFitHome() {
+interface ImageFitHomeProps {
+  page?: ToolSeoPage;
+}
+
+export default function ImageFitHome({ page }: ImageFitHomeProps) {
   const [selected, setSelected] = useState<SelectedImage | null>(null);
   const [result, setResult] = useState<CompressionResult | null>(null);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -89,14 +96,15 @@ export default function ImageFitHome() {
   return (
     <div className="image-fit-page">
       <Seo
-        title="ImageFit - 免费在线图片压缩与尺寸调整工具"
-        description="免费在线压缩图片到指定 KB，调整宽高并转换为 JPG 或 WebP。图片仅在浏览器本地处理，不会上传服务器。"
-        path="/"
+        title={page?.title ?? 'ImageFit - 免费在线图片压缩与尺寸调整工具'}
+        description={page?.description ?? '免费在线压缩图片到指定 KB，调整宽高并转换为 JPG 或 WebP。图片仅在浏览器本地处理，不会上传服务器。'}
+        path={page?.path ?? '/'}
         structuredData={{
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
-          name: 'ImageFit',
-          url: 'https://www.goodbai.baby/',
+          name: page ? `${page.h1Line1}${page.h1Line2}` : 'ImageFit',
+          url: `https://www.goodbai.baby${page?.path ?? '/'}`,
+          description: page?.description,
           applicationCategory: 'UtilitiesApplication',
           operatingSystem: 'Any',
           isAccessibleForFree: true,
@@ -104,9 +112,11 @@ export default function ImageFitHome() {
       />
       <main className="if-main">
         <section className="if-intro" aria-labelledby="imagefit-title">
-          <div className="if-eyebrow"><span /> ImageFit 图片上传合规助手</div>
-          <h1 id="imagefit-title">把照片处理成<br />网站要求的格式</h1>
-          <p>指定文件大小、尺寸和格式，一键生成可以上传的图片。</p>
+          <div className="if-eyebrow"><span /> {page?.eyebrow ?? 'ImageFit 图片上传合规助手'}</div>
+          <h1 id="imagefit-title">
+            {page?.h1Line1 ?? '把照片处理成'}<br />{page?.h1Line2 ?? '网站要求的格式'}
+          </h1>
+          <p>{page?.subtitle ?? '指定文件大小、尺寸和格式，一键生成可以上传的图片。'}</p>
           <div className="if-privacy-inline">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="5" y="10" width="14" height="10" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" />
@@ -151,10 +161,21 @@ export default function ImageFitHome() {
               originalWidth={selected.metadata.width}
               originalHeight={selected.metadata.height}
               processing={processing}
+              initialPresetId={page?.presetId}
+              initialMaxSizeKB={page?.initialMaxSizeKB}
+              initialFormat={page?.initialFormat}
               onProcess={processImage}
             />
           </section>
         ) : <ImageUploader onSelect={selectFile} />}
+
+        <nav className="if-target-links" aria-label="常用图片处理目标">
+          {TOOL_SEO_PAGES.map((target) => (
+            <Link key={target.path} to={target.path} aria-current={page?.path === target.path ? 'page' : undefined}>
+              {target.eyebrow}
+            </Link>
+          ))}
+        </nav>
 
         <section className="if-trust-strip" aria-label="产品特点">
           <article><span className="if-feature-icon" aria-hidden="true">⌑</span><div><h2>本地处理</h2><p>图片不会上传服务器</p></div></article>
