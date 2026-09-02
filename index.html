@@ -29,17 +29,29 @@
     <script id="route-structured-data" type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "ImageFit",
-        "url": "https://www.goodbai.baby/",
-        "description": "免费的在线图片压缩与尺寸调整工具，可指定文件大小、宽高及 JPG 或 WebP 输出格式。",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
-        "inLanguage": "zh-CN",
-        "isAccessibleForFree": true,
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
-        "featureList": ["图片压缩到指定 KB", "调整图片宽度和高度", "转换为 JPG 或 WebP", "浏览器本地处理图片"]
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": "ImageFit",
+            "url": "https://www.goodbai.baby/",
+            "description": "免费的在线图片压缩与尺寸调整工具，可指定文件大小、宽高及 JPG 或 WebP 输出格式。",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and HTML5 Canvas support",
+            "inLanguage": "zh-CN",
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
+            "featureList": ["图片压缩到指定 KB", "调整图片宽度和高度", "转换为 JPG 或 WebP", "浏览器本地处理图片"]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "图片会上传到服务器吗？", "acceptedAnswer": { "@type": "Answer", "text": "不会。图片压缩、尺寸调整和格式转换都在浏览器本地完成，文件不会离开你的设备。" } },
+              { "@type": "Question", "name": "支持哪些图片格式？", "acceptedAnswer": { "@type": "Answer", "text": "支持 JPG、PNG、WebP 图片输入，并可输出为 JPG 或 WebP。" } },
+              { "@type": "Question", "name": "可以把图片压缩到指定 KB 吗？", "acceptedAnswer": { "@type": "Answer", "text": "可以。输入目标文件大小后，工具会在尽量保留画质的前提下，将图片压缩到指定 KB 以内。" } }
+            ]
+          }
+        ]
       }
     </script>
     <style>
@@ -63,6 +75,15 @@
       .boot-upload strong { margin-top: 20px; font-size: 19px; }
       .boot-status { margin-top: 8px; color: #718097; font-size: 12px; }
       .boot-status::after { content: ''; display: inline-block; width: 5px; height: 5px; margin-left: 7px; vertical-align: 2px; background: #1769e0; border-radius: 50%; animation: boot-pulse 1s ease-in-out infinite alternate; }
+      /* homepage-seo-style:start */
+      .boot-seo { margin-top: 42px; padding-top: 30px; color: #657087; border-top: 1px solid #dce3ed; text-align: left; }
+      .boot-seo h2 { margin: 0 0 10px; color: #172033; font-size: 22px; text-align: center; }
+      .boot-seo > p { margin: 0; font-size: 14px; line-height: 1.8; text-align: center; }
+      .boot-steps, .boot-faq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+      .boot-seo h3 { margin: 0; color: #253147; font-size: 14px; }
+      .boot-seo article p { margin: 6px 0 0; font-size: 12px; line-height: 1.65; }
+      @media (max-width: 600px) { .boot-steps, .boot-faq { grid-template-columns: 1fr; } }
+      /* homepage-seo-style:end */
       .boot-noscript { display: block; padding: 16px; color: #8b2c2c; background: #fff4f4; text-align: center; font-size: 13px; }
       @keyframes boot-pulse { to { opacity: .25; transform: scale(.75); } }
       @media (max-width: 600px) { .boot-local { font-size: 0; } .boot-local::before { width: 9px; height: 9px; } .boot-main { padding-top: 38px; } .boot-main h1 { font-size: 36px; } .boot-subtitle { font-size: 14px; } .boot-upload { min-height: 280px; } }
@@ -82,7 +103,7 @@
       </header>
       <main class="boot-main">
         <p class="boot-eyebrow">ImageFit 图片上传合规助手</p>
-        <h1>把照片处理成<br />网站要求的格式</h1>
+        <h1>免费在线图片压缩<br />与尺寸调整</h1>
         <p class="boot-subtitle">指定文件大小、尺寸和格式，一键生成可以上传的图片。</p>
         <div class="boot-upload" aria-busy="true" aria-label="正在加载图片工具">
           <span class="boot-upload-icon" aria-hidden="true">
@@ -91,6 +112,22 @@
           <strong>图片工具准备中</strong>
           <span class="boot-status">正在加载本地处理组件</span>
         </div>
+        <!-- homepage-seo:start -->
+        <section class="boot-seo" aria-labelledby="boot-guide-title">
+          <h2 id="boot-guide-title">在线压缩图片、修改尺寸和转换格式</h2>
+          <p>ImageFit 支持 JPG、PNG、WebP 图片，可按上传要求指定目标 KB、宽度和高度，并输出 JPG 或 WebP。所有处理均在浏览器本地完成，无需上传图片，也无需安装软件。</p>
+          <div class="boot-steps" aria-label="图片处理步骤">
+            <article><h3>1. 选择图片</h3><p>上传 JPG、PNG 或 WebP 文件。</p></article>
+            <article><h3>2. 设置上传要求</h3><p>填写目标 KB、图片尺寸和输出格式。</p></article>
+            <article><h3>3. 压缩并下载</h3><p>本地生成符合要求的新图片。</p></article>
+          </div>
+          <div class="boot-faq">
+            <article><h3>图片会上传到服务器吗？</h3><p>不会，图片处理都在浏览器本地完成。</p></article>
+            <article><h3>支持哪些图片格式？</h3><p>支持 JPG、PNG、WebP 输入，可输出 JPG 或 WebP。</p></article>
+            <article><h3>可以压缩到指定 KB 吗？</h3><p>可以，工具会尽量保留画质并压缩到指定 KB 以内。</p></article>
+          </div>
+        </section>
+        <!-- homepage-seo:end -->
       </main>
     </div>
     <noscript><span class="boot-noscript">ImageFit 需要启用 JavaScript 才能在浏览器本地处理图片。</span></noscript>

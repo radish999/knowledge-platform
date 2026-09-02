@@ -141,6 +141,18 @@
 .if-feature-icon { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; color: var(--if-blue); background: var(--if-blue-soft); border-radius: 6px; font-size: 20px; font-weight: 700; }
 .if-trust-strip h2 { margin: 0 0 3px; color: #172033; font-size: 13px; font-weight: 750; }
 .if-trust-strip p { margin: 0; color: var(--if-muted); font-size: 11px; white-space: nowrap; }
+.if-seo-content { padding: 12px 0 54px; border-top: 1px solid var(--if-line); }
+.if-seo-intro { max-width: 760px; margin: 32px auto 0; text-align: center; }
+.if-seo-content h2 { margin: 0; color: #172033; font-size: 24px; line-height: 1.35; letter-spacing: 0; }
+.if-seo-intro p { margin: 12px 0 0; color: var(--if-muted); font-size: 14px; line-height: 1.8; }
+.if-seo-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 34px; }
+.if-seo-steps article { position: relative; padding-left: 42px; }
+.if-seo-steps span { position: absolute; top: 0; left: 0; width: 28px; height: 28px; display: grid; place-items: center; color: var(--if-blue); background: var(--if-blue-soft); border-radius: 5px; font-size: 12px; font-weight: 800; }
+.if-seo-content h3 { margin: 0; color: #253147; font-size: 15px; letter-spacing: 0; }
+.if-seo-content article p { margin: 7px 0 0; color: var(--if-muted); font-size: 13px; line-height: 1.65; }
+.if-faq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 46px; }
+.if-faq > h2 { grid-column: 1 / -1; font-size: 20px; }
+.if-faq article { padding-top: 16px; border-top: 1px solid var(--if-line); }
 .if-footer { display: flex; justify-content: space-between; width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 20px 0 28px; color: #8a95a7; border-top: 1px solid #dfe5ed; font-size: 11px; }
 
 @keyframes if-spin { to { transform: rotate(360deg); } }
@@ -156,6 +168,8 @@
   .if-result-preview { min-height: 280px; max-height: 460px; }
   .if-trust-strip { grid-template-columns: 1fr; }
   .if-trust-strip article { justify-content: flex-start; padding-left: max(24px, calc((100% - 250px) / 2)); }
+  .if-seo-steps, .if-faq { grid-template-columns: 1fr; gap: 20px; }
+  .if-faq > h2 { grid-column: auto; }
 }
 
 @media (max-width: 480px) {

@@ -12,6 +12,21 @@ import { TOOL_SEO_PAGES } from './seo-pages';
 import type { ToolSeoPage } from './seo-pages';
 import './image-fit.css';
 
+const homepageFaqs = [
+  {
+    question: '图片会上传到服务器吗？',
+    answer: '不会。图片压缩、尺寸调整和格式转换都在浏览器本地完成，文件不会离开你的设备。',
+  },
+  {
+    question: '支持哪些图片格式？',
+    answer: '支持 JPG、PNG、WebP 图片输入，并可输出为 JPG 或 WebP。',
+  },
+  {
+    question: '可以把图片压缩到指定 KB 吗？',
+    answer: '可以。输入目标文件大小后，工具会在尽量保留画质的前提下，将图片压缩到指定 KB 以内。',
+  },
+];
+
 interface ImageFitHomeProps {
   page?: ToolSeoPage;
 }
@@ -99,22 +114,47 @@ export default function ImageFitHome({ page }: ImageFitHomeProps) {
         title={page?.title ?? 'ImageFit - 免费在线图片压缩与尺寸调整工具'}
         description={page?.description ?? '免费在线压缩图片到指定 KB，调整宽高并转换为 JPG 或 WebP。图片仅在浏览器本地处理，不会上传服务器。'}
         path={page?.path ?? '/'}
-        structuredData={{
+        structuredData={page ? {
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
-          name: page ? `${page.h1Line1}${page.h1Line2}` : 'ImageFit',
-          url: `https://www.goodbai.baby${page?.path ?? '/'}`,
-          description: page?.description,
+          name: `${page.h1Line1}${page.h1Line2}`,
+          url: `https://www.goodbai.baby${page.path}`,
+          description: page.description,
           applicationCategory: 'UtilitiesApplication',
           operatingSystem: 'Any',
           isAccessibleForFree: true,
+        } : {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebApplication',
+              name: 'ImageFit',
+              url: 'https://www.goodbai.baby/',
+              description: '免费的在线图片压缩与尺寸调整工具，可指定文件大小、宽高及 JPG 或 WebP 输出格式。',
+              applicationCategory: 'UtilitiesApplication',
+              operatingSystem: 'Any',
+              browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
+              inLanguage: 'zh-CN',
+              isAccessibleForFree: true,
+              offers: { '@type': 'Offer', price: '0', priceCurrency: 'CNY' },
+              featureList: ['图片压缩到指定 KB', '调整图片宽度和高度', '转换为 JPG 或 WebP', '浏览器本地处理图片'],
+            },
+            {
+              '@type': 'FAQPage',
+              mainEntity: homepageFaqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            },
+          ],
         }}
       />
       <main className="if-main">
         <section className="if-intro" aria-labelledby="imagefit-title">
           <div className="if-eyebrow"><span /> {page?.eyebrow ?? 'ImageFit 图片上传合规助手'}</div>
           <h1 id="imagefit-title">
-            {page?.h1Line1 ?? '把照片处理成'}<br />{page?.h1Line2 ?? '网站要求的格式'}
+            {page?.h1Line1 ?? '免费在线图片压缩'}<br />{page?.h1Line2 ?? '与尺寸调整'}
           </h1>
           <p>{page?.subtitle ?? '指定文件大小、尺寸和格式，一键生成可以上传的图片。'}</p>
           <div className="if-privacy-inline">
@@ -182,6 +222,32 @@ export default function ImageFitHome({ page }: ImageFitHomeProps) {
           <article><span className="if-feature-icon" aria-hidden="true">↯</span><div><h2>快速处理</h2><p>浏览器直接完成压缩</p></div></article>
           <article><span className="if-feature-icon" aria-hidden="true">◎</span><div><h2>精确控制</h2><p>指定 KB / 尺寸 / 格式</p></div></article>
         </section>
+
+        {!page ? (
+          <section className="if-seo-content" aria-labelledby="imagefit-guide-title">
+            <div className="if-seo-intro">
+              <h2 id="imagefit-guide-title">在线压缩图片、修改尺寸和转换格式</h2>
+              <p>
+                ImageFit 支持 JPG、PNG、WebP 图片，可按上传要求指定目标 KB、宽度和高度，并输出 JPG 或 WebP。
+                所有处理均在浏览器本地完成，无需上传图片，也无需安装软件。
+              </p>
+            </div>
+            <div className="if-seo-steps" aria-label="图片处理步骤">
+              <article><span>1</span><h3>选择图片</h3><p>上传 JPG、PNG 或 WebP 文件。</p></article>
+              <article><span>2</span><h3>设置上传要求</h3><p>填写目标 KB、图片尺寸和输出格式。</p></article>
+              <article><span>3</span><h3>压缩并下载</h3><p>本地生成符合要求的新图片。</p></article>
+            </div>
+            <div className="if-faq">
+              <h2>图片压缩常见问题</h2>
+              {homepageFaqs.map((faq) => (
+                <article key={faq.question}>
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </main>
 
       <footer className="if-footer">
