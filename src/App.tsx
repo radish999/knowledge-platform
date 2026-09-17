@@ -4,6 +4,7 @@ import { useAtom } from 'jotai';
 import { darkModeAtom } from './store';
 import ImageFitHome from './features/image-fit/ImageFitHome';
 import { TOOL_SEO_PAGES } from './features/image-fit/seo-pages';
+import SiteAnalytics from './components/SiteAnalytics';
 
 const ToolsHome = lazy(() => import('./features/tools/ToolsHome'));
 const ImagePrivacy = lazy(() => import('./features/tools/ImagePrivacy'));
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <SiteAnalytics />
       <div className={`min-h-screen transition-colors duration-200 ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
         <header className="sticky top-0 z-50 bg-white px-4 py-3 shadow transition-colors duration-200 dark:bg-gray-800">
           <div className="mx-auto max-w-6xl">

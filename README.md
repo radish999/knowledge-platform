@@ -111,3 +111,12 @@ export default defineConfig([
 - JSON 和文本对比在后台执行，输入框避免逐字触发整页渲染；差异结果每段显示 100 行，完整结果仍可逐段查看。
 - 取消会终止当前 Worker，后续任务重新创建；旧任务的结果不能覆盖新输入。缺少 OffscreenCanvas 的浏览器使用兼容的图片处理路径。
 - 性能回归：`PLAYWRIGHT_CHANNEL=chrome npm test -- performance.spec.ts --workers=1`，使用 4 倍 CPU 降速检查 24MP 图片、600 页 PDF 与 1500 行文本对比期间的主线程长任务。测量时避免同时运行构建或其他重负载任务。
+
+### Vercel 访问统计
+
+已接入 `@vercel/analytics/react`，并使用 React Router 的路径记录首次访问及站内页面切换。Vercel 项目后台需保持 Web Analytics 开启。
+
+- 仅生产构建中的 `www.goodbai.baby` 和 `goodbai.baby` 记录访问；本地开发、构建预览和 Vercel 预览域名不发送统计。
+- 仅记录页面浏览，不接入自定义事件；URL 查询参数和片段会被移除，`/pv` 管理入口不记录浏览。工具内容、文件和文件名不会传入统计组件。
+- 访问 `/pv` 可打开项目的 Vercel Web Analytics 后台；需使用有项目权限的 Vercel 账号登录。统计数据可能延迟几分钟展示，浏览器的拦截扩展也可能阻止上报。
+- 此入口已替代旧 Nginx 统计面板；Vercel 网站的流量以 Vercel 后台为准。

@@ -19,7 +19,7 @@ const sections = [
   {
     title: '3. 第三方服务',
     body: [
-      '为实现统计分析与基础功能，本服务可能会使用第三方服务（例如 Vercel Analytics）。这些服务对数据的处理受其各自隐私政策约束。',
+      '本服务使用 Vercel Web Analytics 统计正式网站的页面访问、来源网站、设备与浏览器类型等信息，用于了解访问量和使用趋势。页面路径上报前会移除查询参数与片段；工具输入、文件名及文件内容不会作为统计数据上传。Vercel 对统计数据的处理受其隐私政策约束。',
       '相关服务：Vercel Analytics，https://vercel.com/analytics',
     ],
   },
