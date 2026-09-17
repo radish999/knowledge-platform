@@ -83,6 +83,50 @@
       "subtitle": "转换格式并控制文件大小，处理全部在浏览器本地完成。",
       "initialMaxSizeKB": 200,
       "initialFormat": "image/webp"
+    },
+    {
+      "slug": "tools",
+      "path": "/tools",
+      "kind": "collection",
+      "title": "GoodBai 工具箱 | GoodBai",
+      "description": "免费图片处理、PDF 整理与开发者工具，在浏览器本地完成，无需登录。",
+      "eyebrow": "GoodBai 工具箱",
+      "h1Line1": "GoodBai 工具箱",
+      "h1Line2": "",
+      "subtitle": "免费图片处理、PDF 整理与开发者工具，在浏览器本地完成，无需登录。"
+    },
+    {
+      "slug": "tools-image-privacy",
+      "path": "/tools/image-privacy",
+      "kind": "utility",
+      "title": "图片水印与隐私遮挡 | GoodBai",
+      "description": "给图片添加用途水印、框选实色遮挡敏感信息，支持下载与继续压缩，全部在本地处理。",
+      "eyebrow": "GoodBai 工具箱",
+      "h1Line1": "图片水印与隐私遮挡",
+      "h1Line2": "",
+      "subtitle": "给图片添加用途水印、框选实色遮挡敏感信息，支持下载与继续压缩，全部在本地处理。"
+    },
+    {
+      "slug": "tools-pdf",
+      "path": "/tools/pdf",
+      "kind": "utility",
+      "title": "PDF 工具箱 | GoodBai",
+      "description": "图片转 PDF、合并 PDF、提取指定页面与调整页序，文件在浏览器本地处理。",
+      "eyebrow": "GoodBai 工具箱",
+      "h1Line1": "PDF 工具箱",
+      "h1Line2": "",
+      "subtitle": "图片转 PDF、合并 PDF、提取指定页面与调整页序，文件在浏览器本地处理。"
+    },
+    {
+      "slug": "tools-developer",
+      "path": "/tools/developer",
+      "kind": "utility",
+      "title": "开发者工具箱 | GoodBai",
+      "description": "在线 JSON 格式化与压缩、文本差异对比、秒和毫秒时间戳转换，内容仅在本地处理。",
+      "eyebrow": "GoodBai 工具箱",
+      "h1Line1": "开发者工具箱",
+      "h1Line2": "",
+      "subtitle": "在线 JSON 格式化与压缩、文本差异对比、秒和毫秒时间戳转换，内容仅在本地处理。"
     }
   ]
 }

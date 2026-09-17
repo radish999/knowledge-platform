@@ -1,12 +1,52 @@
 {
   "rewrites": [
-    { "source": "/knowledge", "destination": "/knowledge.html" },
-    { "source": "/compress-to-100kb", "destination": "/compress-to-100kb.html" },
-    { "source": "/compress-to-200kb", "destination": "/compress-to-200kb.html" },
-    { "source": "/application-photo", "destination": "/application-photo.html" },
-    { "source": "/one-inch-photo", "destination": "/one-inch-photo.html" },
-    { "source": "/avatar-compressor", "destination": "/avatar-compressor.html" },
-    { "source": "/jpg-to-webp", "destination": "/jpg-to-webp.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/knowledge",
+      "destination": "/knowledge.html"
+    },
+    {
+      "source": "/compress-to-100kb",
+      "destination": "/compress-to-100kb.html"
+    },
+    {
+      "source": "/compress-to-200kb",
+      "destination": "/compress-to-200kb.html"
+    },
+    {
+      "source": "/application-photo",
+      "destination": "/application-photo.html"
+    },
+    {
+      "source": "/one-inch-photo",
+      "destination": "/one-inch-photo.html"
+    },
+    {
+      "source": "/avatar-compressor",
+      "destination": "/avatar-compressor.html"
+    },
+    {
+      "source": "/jpg-to-webp",
+      "destination": "/jpg-to-webp.html"
+    },
+    {
+      "source": "/tools",
+      "destination": "/tools.html"
+    },
+    {
+      "source": "/tools/image-privacy",
+      "destination": "/tools-image-privacy.html"
+    },
+    {
+      "source": "/tools/pdf",
+      "destination": "/tools-pdf.html"
+    },
+    {
+      "source": "/tools/developer",
+      "destination": "/tools-developer.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

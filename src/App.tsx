@@ -5,6 +5,10 @@ import { darkModeAtom } from './store';
 import ImageFitHome from './features/image-fit/ImageFitHome';
 import { TOOL_SEO_PAGES } from './features/image-fit/seo-pages';
 
+const ToolsHome = lazy(() => import('./features/tools/ToolsHome'));
+const ImagePrivacy = lazy(() => import('./features/tools/ImagePrivacy'));
+const PdfTools = lazy(() => import('./features/tools/PdfTools'));
+const DeveloperTools = lazy(() => import('./features/tools/DeveloperTools'));
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -64,6 +68,7 @@ function App() {
                       图片助手
                     </Link>
                   </li>
+                  <li><Link to="/tools" className={navLinkClassName}>工具箱</Link></li>
                   <li>
                     <Link to="/knowledge" className={navLinkClassName}>
                       知识首页
@@ -99,6 +104,7 @@ function App() {
                       图片助手
                     </Link>
                   </li>
+                  <li><Link to="/tools" className={mobileLinkClassName} onClick={closeMobileMenu}>工具箱</Link></li>
                   <li>
                     <Link to="/knowledge" className={mobileLinkClassName} onClick={closeMobileMenu}>
                       知识首页
@@ -122,6 +128,10 @@ function App() {
         <main>
           <Suspense fallback={<div className="flex min-h-[40vh] items-center justify-center text-sm text-gray-500">正在加载…</div>}>
             <Routes>
+              <Route path="/tools" element={<ToolsHome />} />
+              <Route path="/tools/image-privacy" element={<ImagePrivacy />} />
+              <Route path="/tools/pdf" element={<PdfTools />} />
+              <Route path="/tools/developer" element={<DeveloperTools />} />
               <Route path="/" element={<ImageFitHome />} />
               {TOOL_SEO_PAGES.map((page) => (
                 <Route key={page.path} path={page.path} element={<ImageFitHome page={page} />} />

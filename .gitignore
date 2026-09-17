@@ -30,3 +30,10 @@ dist-ssr
 /one-inch-photo.html
 /avatar-compressor.html
 /jpg-to-webp.html
+
+/tools.html
+/tools-image-privacy.html
+/tools-pdf.html
+/tools-developer.html
+/test-results/
+/playwright-report/

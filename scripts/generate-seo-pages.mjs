@@ -15,7 +15,7 @@ const escapeHtml = (value) => value
 
 for (const page of config.pages) {
   const canonical = `${siteUrl}${page.path}`;
-  const schema = page.kind === 'tool'
+  const schema = ['tool', 'utility'].includes(page.kind)
     ? {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
@@ -58,6 +58,14 @@ for (const page of config.pages) {
       .replace('正在加载本地处理组件', '正在加载知识首页');
   }
 
+  if (['utility', 'collection'].includes(page.kind)) {
+    html = html.replace('图片工具准备中', '工具准备中')
+      .replace('正在加载本地处理组件', '正在加载所选工具')
+      .replace('正在加载图片工具', '正在加载工具')
+      .replace('图片仅在浏览器本地处理', '内容仅在浏览器本地处理')
+      .replace('ImageFit 需要启用 JavaScript 才能在浏览器本地处理图片。', 'GoodBai 工具箱需要启用 JavaScript 才能在浏览器本地处理内容。');
+  }
+
   await writeFile(path.join(projectRoot, `${page.slug}.html`), html, 'utf8');
 }
 
@@ -65,8 +73,8 @@ const sitemapEntries = [
   { path: '/', priority: '1.0', changefreq: 'monthly' },
   ...config.pages.map((page) => ({
     path: page.path,
-    priority: page.kind === 'tool' ? '0.9' : '0.8',
-    changefreq: page.kind === 'tool' ? 'monthly' : 'weekly',
+    priority: ['tool', 'utility'].includes(page.kind) ? '0.9' : '0.8',
+    changefreq: ['tool', 'utility'].includes(page.kind) ? 'monthly' : 'weekly',
   })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

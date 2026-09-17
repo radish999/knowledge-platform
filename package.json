@@ -10,7 +10,8 @@
     "build": "tsc -b && vite build",
     "deploy": "bash ./deploy-web.sh",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "playwright test"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
@@ -18,8 +19,10 @@
     "adm-zip": "^0.5.16",
     "autoprefixer": "^10.4.27",
     "axios": "^1.13.6",
+    "diff": "^9.0.0",
     "dotenv": "^17.3.1",
     "jotai": "^2.18.0",
+    "pdf-lib": "^1.17.1",
     "postcss": "^8.5.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -32,6 +35,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",

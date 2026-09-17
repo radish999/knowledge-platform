@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { TOOL_SEO_PAGES } from './seo-pages';
 import type { ToolSeoPage } from './seo-pages';
 import './image-fit.css';
+import { consumeImageForCompression, peekImageForCompression } from '../tools/handoff';
 
 const homepageFaqs = [
   {
@@ -32,6 +33,7 @@ interface ImageFitHomeProps {
 }
 
 export default function ImageFitHome({ page }: ImageFitHomeProps) {
+  const [incomingFile] = useState(peekImageForCompression);
   const [selected, setSelected] = useState<SelectedImage | null>(null);
   const [result, setResult] = useState<CompressionResult | null>(null);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
@@ -71,6 +73,16 @@ export default function ImageFitHome({ page }: ImageFitHomeProps) {
       setError(cause instanceof Error ? cause.message : '无法读取这张图片，请重试。');
     }
   };
+
+  useEffect(() => {
+    if (!incomingFile) return;
+    consumeImageForCompression(incomingFile);
+    let active = true;
+    void getImageMetadata(incomingFile).then(metadata => {
+      if (active) replaceSelected({file: incomingFile, metadata, previewUrl: URL.createObjectURL(incomingFile)});
+    }).catch(cause => {if (active) setError(cause instanceof Error ? cause.message : '无法读取处理后的图片。');});
+    return () => {active = false;};
+  }, [incomingFile, replaceSelected]);
 
   const processImage = async (requirement: ImageRequirement) => {
     if (!selected || processing) return;
